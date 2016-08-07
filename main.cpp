@@ -1,5 +1,6 @@
 #include <iostream>
 #include "bubble.h"
+#include "quick.h"
 
 int get_number(char* pchar)
 {
@@ -19,8 +20,13 @@ int main(int argc, char** argv)
 	int num = get_number(argv[1]);
 	if ( num > 0 ){
 	    std::vector<int> v(num);
+	    Sort::init(v);
+
 	    BubbleSort b(v);
 	    b.sort();
+
+	    QuickSort q(v);
+	    q.sort();
 	}
     } else {
 	std::cout << "Usage: ./sorters <elements num>" << std::endl;

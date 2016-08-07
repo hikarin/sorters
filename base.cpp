@@ -1,4 +1,5 @@
 #include "base.h"
+#include <random>
 
 Sort::Sort(std::vector<int> v)
     : elements(v)
@@ -7,11 +8,18 @@ Sort::Sort(std::vector<int> v)
 Sort::~Sort()
 {}
 
-void Sort::swap(int a, int b)
+void Sort::swap(int& a, int& b)
 {
     auto tmp = a;
     a = b;
     b = tmp;
+}
+
+void Sort::init(std::vector<int>& v)
+{
+    for ( auto p = v.begin(); p != v.end(); p++ ) {
+	*p = std::rand() % v.size();
+    }
 }
 
 bool Sort::check() const
