@@ -4,6 +4,7 @@
 #include "bubble.h"
 #include "quick.h"
 #include "comb.h"
+#include "bitonic.h"
 
 using namespace std::chrono;
 
@@ -43,6 +44,9 @@ void measure_all(std::vector<int>& v)
 
     CombSort c(v);
     measure_one(c);
+
+    BitonicSort bi(v);
+    measure_one(bi);
 
     std::cout << std::endl;
 }
