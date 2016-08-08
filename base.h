@@ -2,6 +2,7 @@
 #define __BASE_H__
 
 #include <vector>
+#include <string>
 
 class Sort {
  public:
@@ -9,6 +10,7 @@ class Sort {
     virtual ~Sort();
 
     virtual void sort() = 0;
+    virtual std::string to_string() = 0;
 
     bool check() const;
 

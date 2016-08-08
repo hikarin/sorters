@@ -1,5 +1,5 @@
 FLAGS = -Wall
-SOURCES = main.cpp base.cpp bubble.cpp quick.cpp
+SOURCES = main.cpp base.cpp bubble.cpp quick.cpp comb.cpp
 EXECUTABLE = ./sorters
 COMPILER = g++
 
@@ -13,4 +13,9 @@ clean:
 
 test:
 	make opt
+	$(EXECUTABLE) 10
+	$(EXECUTABLE) 100
+	$(EXECUTABLE) 1000
 	$(EXECUTABLE) 10000
+	$(EXECUTABLE) 100000
+	$(EXECUTABLE) 1000000

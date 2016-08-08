@@ -1,6 +1,11 @@
 #include <iostream>
+#include <chrono>
+#include <string.h>
 #include "bubble.h"
 #include "quick.h"
+#include "comb.h"
+
+using namespace std::chrono;
 
 int get_number(char* pchar)
 {
@@ -14,6 +19,39 @@ int get_number(char* pchar)
     return num;
 }
 
+void measure_one(Sort& sort)
+{
+    auto start = system_clock::now();
+    sort.sort();
+    auto end = system_clock::now();
+    if ( sort.check() ) {
+	auto duration = duration_cast<microseconds>(end-start).count();
+	std::cout << sort.to_string() << ": " << duration << std::endl;
+    } else {
+	// failure
+	std::cout << sort.to_string() << ": sort failed" << std::endl;
+    }
+}
+
+void measure_all(std::vector<int>& v)
+{
+    //    BubbleSort b(v);
+    //    measure_one(b);
+
+    QuickSort q(v);
+    measure_one(q);
+
+    CombSort c(v);
+    measure_one(c);
+
+    std::cout << std::endl;
+}
+
+void putstring(std::string str)
+{
+
+}
+
 int main(int argc, char** argv)
 {
     if ( argc >= 2 ){
@@ -22,11 +60,7 @@ int main(int argc, char** argv)
 	    std::vector<int> v(num);
 	    Sort::init(v);
 
-	    BubbleSort b(v);
-	    b.sort();
-
-	    QuickSort q(v);
-	    q.sort();
+	    measure_all(v);
 	}
     } else {
 	std::cout << "Usage: ./sorters <elements num>" << std::endl;
