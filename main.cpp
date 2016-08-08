@@ -36,9 +36,6 @@ void measure_one(Sort& sort)
 
 void measure_all(std::vector<int>& v)
 {
-    //    BubbleSort b(v);
-    //    measure_one(b);
-
     QuickSort q(v);
     measure_one(q);
 
@@ -47,6 +44,9 @@ void measure_all(std::vector<int>& v)
 
     BitonicSort bi(v);
     measure_one(bi);
+
+    BubbleSort b(v);
+    measure_one(b);
 
     std::cout << std::endl;
 }

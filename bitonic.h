@@ -6,7 +6,7 @@ public:
     ~BitonicSort(){};
 
     virtual void sort();
-    virtual std::string to_string() { return "bitonic sort"; };
+    virtual std::string to_string() { return "Bitonic Sort "; };
 private:
     void bitonic_sub(bool up, int start, int width);
     void bitonic_merge(bool up, int start, int width);

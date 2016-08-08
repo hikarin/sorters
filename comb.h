@@ -6,6 +6,6 @@ public:
     ~CombSort(){};
 
     virtual void sort();
-    virtual std::string to_string() { return "Comb Sort"; };
+    virtual std::string to_string() { return "Comb Sort    "; };
 private:
 };
