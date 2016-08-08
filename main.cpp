@@ -5,6 +5,7 @@
 #include "quick.h"
 #include "comb.h"
 #include "bitonic.h"
+#include "heap.h"
 
 using namespace std::chrono;
 
@@ -47,6 +48,9 @@ void measure_all(std::vector<int>& v)
 
     BubbleSort b(v);
     measure_one(b);
+
+    HeapSort h(v);
+    measure_one(h);
 
     std::cout << std::endl;
 }
