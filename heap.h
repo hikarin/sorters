@@ -9,4 +9,5 @@ public:
     virtual std::string to_string() { return "Heap Sort    "; };
 private:
     void create_heap(int sz);
+    void down_heap(int leaf, int root);
 };
