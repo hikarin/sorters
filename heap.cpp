@@ -6,26 +6,32 @@ HeapSort::HeapSort(std::vector<int> v)
 
 void HeapSort::sort()
 {
-    const int sz = elements.size();
-    create_heap(sz);
-    int x = sz-1;
-    while ( x >= 0 ) {
-	swap( elements[0], elements[x] );
-	create_heap(x--);
+    int leaf = elements.size();
+    int root = leaf/2;
+
+    while ( root >= 0 ) {
+	down_heap(leaf, root);
+	root--;
+    }
+
+    while ( leaf >= 0 ) {
+	swap(elements[0], elements[leaf]);
+	leaf--;
+	down_heap(leaf, 0);
     }
 }
 
-void HeapSort::create_heap(int sz)
+void HeapSort::down_heap(int leaf , int root)
 {
-    int scanned = 1;
-    while ( scanned < sz ) {
-	int x = scanned;
-	while ( x > 0 ) {
-	    int parent = (x-1)/2;
-	    if ( elements[x] > elements[parent] )
-		swap(elements[x], elements[parent]);
-	    x = parent;
-	}
-	++scanned;
+    int i = root*2+1;
+    while( i <=leaf ){
+	if(i<leaf && elements[i+1]>elements[i])
+	    i++;
+	if(elements[root] >= elements[i])
+	    break;
+	swap(elements[root], elements[i]);
+
+	root = i;
+	i=root*2+1;
     }
 }
