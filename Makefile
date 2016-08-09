@@ -13,4 +13,4 @@ clean:
 
 test:
 	make opt
-	$(EXECUTABLE) 10000
+	$(EXECUTABLE) 50,000,000

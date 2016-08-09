@@ -14,6 +14,11 @@ int get_number(char* pchar)
     std::string str(pchar);
     int num = 0;
     for ( auto p = str.begin(); p != str.end(); p++ ) {
+	if ( *p == ',' || *p == '_' )
+	    // delimiter
+	    continue;
+	if ( !( '0' <= *p && *p <= '9' ) )
+	    return 0;
 	num *= 10;
 	num += (*p - '0');
     }
@@ -27,7 +32,7 @@ void measure_one(Sort& sort)
     sort.sort();
     auto end = system_clock::now();
     if ( sort.check() ) {
-	auto duration = duration_cast<microseconds>(end-start).count();
+	auto duration = duration_cast<milliseconds>(end-start).count();
 	std::cout << sort.to_string() << ": " << duration << std::endl;
     } else {
 	// failure
@@ -47,7 +52,7 @@ void measure_all(std::vector<int>& v)
     measure_one(bi);
 
     BubbleSort b(v);
-    measure_one(b);
+    //measure_one(b);
 
     HeapSort h(v);
     measure_one(h);
