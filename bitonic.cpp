@@ -5,23 +5,22 @@
 
 BitonicSort::BitonicSort(std::vector<int> v)
     : Sort(v)
+{}
+
+void BitonicSort::sort()
 {
-    prev_size = v.size();
+    // adjust vector size
+    const size_t prev_size = elements.size();
     int new_size = prev_size;
     while ( ( new_size & ( new_size-1 ) ) != 0  ) {
 	elements.push_back(INT_MAX);
 	++new_size;
     }
-}
 
-void BitonicSort::sort()
-{
-    const int element_size = elements.size();
-    bitonic_sub(true, 0, element_size);
-    int sz = element_size;
-    while ( sz > prev_size ) {
+    bitonic_sub(true, 0, new_size);
+    while ( new_size > prev_size ) {
 	elements.pop_back();
-	--sz;
+	--new_size;
     }
 }
 
