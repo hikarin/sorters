@@ -13,7 +13,7 @@ clean:
 
 test:
 	make opt
-	$(EXECUTABLE) 80,000,000
+	$(EXECUTABLE)  1,000,000
 
 debug:
 	make all
