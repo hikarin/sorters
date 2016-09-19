@@ -25,7 +25,7 @@ void HeapSort::down_heap(int leaf , int root)
 {
     int i = root*2+1;
     while( i <=leaf ){
-	if(i<leaf && elements[i+1]>elements[i])
+	if(i<leaf && i+1<elements.size() && elements[i+1]>elements[i])
 	    i++;
 	if(elements[root] >= elements[i])
 	    break;
