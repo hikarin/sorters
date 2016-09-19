@@ -6,7 +6,7 @@ HeapSort::HeapSort(std::vector<int> v)
 
 void HeapSort::sort()
 {
-    int leaf = elements.size();
+    int leaf = elements.size()-1;
     int root = leaf/2;
 
     while ( root >= 0 ) {
@@ -25,7 +25,7 @@ void HeapSort::down_heap(int leaf , int root)
 {
     int i = root*2+1;
     while( i <=leaf ){
-	if(i<leaf && i+1<elements.size() && elements[i+1]>elements[i])
+	if(i<leaf && elements[i+1]>elements[i])
 	    i++;
 	if(elements[root] >= elements[i])
 	    break;
