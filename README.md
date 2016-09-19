@@ -1,2 +1,2 @@
 # sorters
-multiple sortes implemented by C++
+multiple sorters implemented by C++
