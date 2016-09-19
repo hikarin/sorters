@@ -5,5 +5,5 @@ class BubbleSort : public Sort {
     BubbleSort(std::vector<int> v);
     ~BubbleSort(){};
     virtual void sort();
-    virtual std::string to_string() { return "Bubble Sort  "; };
+    virtual std::string name() const { return "Bubble"; };
 };

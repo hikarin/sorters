@@ -6,7 +6,7 @@ public:
     ~HeapSort(){};
 
     virtual void sort();
-    virtual std::string to_string() { return "Heap Sort    "; };
+    virtual std::string name() const { return std::string("Heap"); }
 private:
     void create_heap(int sz);
     void down_heap(int leaf, int root);

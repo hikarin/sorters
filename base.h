@@ -10,7 +10,7 @@ class Sort {
     virtual ~Sort();
 
     virtual void sort() = 0;
-    virtual std::string to_string() = 0;
+    virtual std::string name() const = 0;
 
     bool check() const;
 

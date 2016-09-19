@@ -6,7 +6,7 @@ public:
     ~QuickSort(){};
 
     virtual void sort();
-    virtual std::string to_string() { return "Quick Sort   "; };
+    virtual std::string name() const { return "Quick"; }
  private:
     void sort_sub(int start, int end);
 };

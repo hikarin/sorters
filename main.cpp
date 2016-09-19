@@ -1,6 +1,9 @@
 #include <iostream>
 #include <chrono>
-#include <string.h>
+#include <string>
+#include <iomanip>
+#include <sstream>
+
 #include "bubble.h"
 #include "quick.h"
 #include "comb.h"
@@ -31,12 +34,19 @@ void measure_one(Sort& sort)
     auto start = system_clock::now();
     sort.sort();
     auto end = system_clock::now();
+    
+    std::string name = sort.name();
+    std::stringstream name_ss;
+    name_ss << std::setw(10) << std::left << name;
+    //name_ss << name << std::setw(10);
     if ( sort.check() ) {
 	auto duration = duration_cast<milliseconds>(end-start).count();
-	std::cout << sort.to_string() << ": " << duration << std::endl;
+	std::stringstream time_ss;
+	time_ss << std::setw(12) << duration;
+	std::cout << name_ss.str() << ": " << time_ss.str() << "[ms]" << std::endl;
     } else {
 	// failure
-	std::cout << sort.to_string() << ": sort failed" << std::endl;
+	std::cout << name_ss.str() << ": sort failed" << std::endl;
     }
 }
 
@@ -52,17 +62,12 @@ void measure_all(std::vector<int>& v)
     measure_one(bi);
 
     BubbleSort b(v);
-    //measure_one(b);
-
+    measure_one(b);
+    
     HeapSort h(v);
     measure_one(h);
 
     std::cout << std::endl;
-}
-
-void putstring(std::string str)
-{
-
 }
 
 int main(int argc, char** argv)
