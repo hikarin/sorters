@@ -1,5 +1,6 @@
 #include "base.h"
 #include <random>
+#include <ctime>
 
 Sort::Sort(std::vector<int> v)
     : elements(v)
@@ -17,7 +18,7 @@ void Sort::swap(int& a, int& b)
 
 void Sort::init(std::vector<int>& v)
 {
-    std::srand(time(nullptr));
+    std::srand(std::time(nullptr));
     for ( auto p = v.begin(); p != v.end(); p++ ) {
 	*p = std::rand() % v.size();
     }
